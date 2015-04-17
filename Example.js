@@ -40,8 +40,10 @@ var t1 = function (b) {
                 enumerable: !0,
                 configurable: !0
             },
-            "funcTest": {
-                value: function(val){return val*5},
+                "funcTest": {
+                value: function (val) {
+                    return val * 5
+                },
                 writable: !0,
                 enumerable: !0,
                 configurable: !0
@@ -82,14 +84,20 @@ var t1 = function (b) {
             },
             enumerable: !0,
             configurable: !0
+        },
+        "otherGetTest": {
+            get: function () {
+                return this._speed;
+            },
+            enumerable: !0,
+            configurable: !0
         }
     });
 
     return a;
 }();
 
-var t1a = new t1("gravy");
-console.log(t1a);
+
 
 
 var t3 = function (name) {
@@ -100,33 +108,40 @@ var t3 = function (name) {
 
 };
 
-t3.prototype = Object.create(t1.prototype,{foox: {
-            value: 'meeow',
-            writable: !0,
-            enumerable: !0,
-            configurable: !0
-        }});
+t3.prototype = Object.create(t1.prototype, {
+    foox: {
+        value: 'meeow',
+        writable: !0,
+        enumerable: !0,
+        configurable: !0
+    }
+});
 
 t3.prototype.constructor = t3;
-
+t3.prototype.doSomething = function (theThing) {
+    console.log(theThing);
+};
 var t4 = new t3("greg");
+
 
 console.log(t4.speed);
 t4.speed = 5000;
 console.log(t4.speed);
 
 console.log("instanceof:");
-console.log("t4 of t3: " ,t4 instanceof t3);
-console.log("t4 of t1: " ,t4 instanceof t1);
-console.log("t4: " ,t4);
-console.log("t3: " ,t3);
-console.log("t1: " ,t1);
-console.log("t4.prototype: " ,t4.prototype);
-console.log("t3.prototype: " ,t3.prototype);
-console.log("t1.prototype: " ,t1.prototype);
-console.log("t4.super: " ,t4.super);
-console.log("t3.super: " ,t3.super);
-console.log("t1.super: " ,t1.super);
+console.log("t4 of t3: ", t4 instanceof t3);
+console.log("t4 of t1: ", t4 instanceof t1);
+console.log("t4: ", t4);
+console.log("t3: ", t3);
+console.log("t1: ", t1);
+console.log("t4.prototype: ", t4.prototype);
+console.log("t3.prototype: ", t3.prototype);
+console.log("t1.prototype: ", t1.prototype);
+console.log("t4.super: ", t4.super);
+console.log("t3.super: ", t3.super);
+console.log("t1.super: ", t1.super);
 console.log(t4.foo);
 t4.bar = "pickle";
 console.log(t4.funcTest(5));
+console.log(t4.base);
+console.log(t4.otherGetTest);
